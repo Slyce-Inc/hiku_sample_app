@@ -25,7 +25,16 @@ and the hiku team will setup your webhook.
 Point a browser to https://yourHerokuAppName.heroku.com/showBeep. Then scan or speak into hiku. When deployed
 properly, the scan/speak item will display an alert window in the open browser.
 
-The sample app is currently deployed to https://hiku-sample-app.herokuapp.com/. 
+The sample app is currently deployed to https://hiku-sample-app.herokuapp.com/.
+
+----------------------
+A note on security
+----------------------
+This is a sample app and is not built with security in mind. The Pusher key and channel is exposed in the javascript of
+showBeep.htm, so anyone can listen to it with those credentials. No one will be able to send messages over that
+Pusher channel though. However, the /beep endpoint does not do any security checks which we would expect, e.g.
+validate the token sent via the webhook. So anyone can POST to that endpoint and mimic the payload (well documented in
+our API's). In other words, if you plan to build a commercial application, please include additional security.
 
 ----------------------
 Good for demos
