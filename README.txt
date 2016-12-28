@@ -25,12 +25,22 @@ and the hiku team will setup your webhook.
 Point a browser to https://yourHerokuAppName.heroku.com/showBeep. Then scan or speak into hiku. When deployed
 properly, the scan/speak item will display an alert window in the open browser.
 
+The sample app is currently deployed to https://hiku-sample-app.herokuapp.com/. 
+
+----------------------
+Good for demos
+----------------------
+You can customize how data is displayed by modifying docs/showBeep.htm. By 'branding' that page and applying your own
+ fonts, color schemes, styles, etc it will demonstrate how easy it is for our partners to integrate hiku data into
+ their own digital systems. We have found that a demo is very convincing with other stakeholders when hiku scan/speaks
+ immediately show up in their own digital ecosystem.
+
 ----------------------
 Build something really cool!
 ----------------------
-This app is purely a demonstration. Please take the code and modify it to do more interesting things with hiku, e.g.
-add items to shopping basket, another list app, send an SMS, control the temperature of a Nest thermostat,
-etc!
+This app is purely a demonstration. Please take the code and modify it to do more interesting things with hiku than
+simply display the last scan/speak, e.g. add items to shopping basket, another list app, send an SMS, control the
+temperature of a Nest thermostat, etc!
 
 If you would like API credentials to do more than use webhooks, please email support@hiku.us.
 
