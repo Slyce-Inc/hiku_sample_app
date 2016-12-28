@@ -5,7 +5,7 @@ from flask import request
 from flask import send_from_directory
 import requests
 import pusher
-from flask import render_template, request, flash,redirect
+import json
 
 
 app = Flask(__name__)
@@ -18,17 +18,22 @@ def hello():
 def showLastBeep():
     name = request.form.get('name', 'no data to show')
     token = request.form.get('token', '1234')
-
+    print 'in show beep'
+    dataParam = request.form.get('data', json.dumps({'name':'havarti', 'token':'1234'}))
+    print 'received data param', dataParam
+    data = json.loads(dataParam)
+    print 'loaded up some json', data
+    print 'name = ', data['name']
 
     # broadcast the name data to pusher
     PUSHER_APP_ID = "53386"
     PUSHER_KEY = "735d7f3f26bde43a7a72"
     PUSHER_SECRET = "02a27e77a29a104ba596"
 
-    data = {'name': name, 'ean': '00018823'}
+    #data = {'name': name, 'ean': '00018823'}
 
     testPusher = pusher.Pusher(app_id=PUSHER_APP_ID, key=PUSHER_KEY, secret=PUSHER_SECRET)
-    testPusher[token].trigger('newDataReady', data)
+    testPusher[data['token']].trigger('newDataReady', data)
 
     return name
 
