@@ -1,3 +1,12 @@
+<!--
+.. :module: showBeep.htm
+   :platform: Linux
+   :synopsis: demo heroku app to listen on a pusher channel for an newly added item name.
+   :copyright: 2016, hiku labs, inc. All rights reserved.
+.. moduleauthor: Rob Katcher <rob@hiku.us> (Dec 27, 2016)
+"""
+//-->
+
 <html>
 <!DOCTYPE html>
 <head>
@@ -13,16 +22,16 @@
 
 
     <!--These are the dev pusher creds from hiku-sample-app.herokuapp.com-->
-    var pusher = new Pusher('735d7f3f26bde43a7a72'); // this is where your pusher key goes
-    var channel = pusher.subscribe('MyPusherChannel'); // this is where your token goes
+    var pusher = new Pusher('c90f72ad90007638c3a2'); // this is where your pusher key goes
+    var channel = pusher.subscribe('MyPusherChannel');
     channel.bind('newDataReady', function(data) {
-      alert('hiku sent: '.concat(data.name));
+      alert('hiku sent: '.concat(data));
     });
   </script>
 </head><body>
 
 <h1>hiku show beep</h1>
-<p id="results">This will display the last beep for the token you configure.</p>
+<p id="results">When this page is open while scanning or speaking, it will display the item name.</p>
 
 
 </body>

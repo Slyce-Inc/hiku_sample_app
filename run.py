@@ -1,4 +1,13 @@
 #!flask/bin/python2.7
+
+"""
+.. :module: run.py
+   :platform: Linux
+   :synopsis: demo heroku app to accept webhook data and send it out over a Pusher channel
+   :copyright: 2016, hiku labs, inc. All rights reserved.
+.. moduleauthor: Rob Katcher <rob@hiku.us> (Dec 27, 2016)
+"""
+
 import os
 from flask import Flask
 from flask import request
@@ -11,7 +20,7 @@ import json
 app = Flask(__name__)
 
 @app.route("/")
-def hello():
+def welcome():
     return "Welcome to the hiku sample app!"
 
 @app.route("/beep", methods = ['POST'])
@@ -21,14 +30,19 @@ def showLastBeep():
     data = payload['data']
 
     # broadcast the name data to pusher
-    PUSHER_APP_ID = "53386"
-    PUSHER_KEY = "735d7f3f26bde43a7a72"
-    PUSHER_SECRET = "02a27e77a29a104ba596"
+    #PUSHER_APP_ID = "53386"
+    #PUSHER_KEY = "735d7f3f26bde43a7a72"
+    #PUSHER_SECRET = "02a27e77a29a104ba596"
+    print 'in the app'
+    PUSHER_APP_ID = os.environ['PUSHER_APP_ID']
+    PUSHER_KEY = os.environ['PUSHER_KEY']
+    PUSHER_SECRET = os.environ['PUSHER_SECRET']
+    print 'creds  = ',PUSHER_APP_ID, PUSHER_KEY, PUSHER_SECRET
 
     #data = {'name': name, 'ean': '00018823'}
 
     testPusher = pusher.Pusher(app_id=PUSHER_APP_ID, key=PUSHER_KEY, secret=PUSHER_SECRET)
-    testPusher['MyPusherChannel'].trigger('newDataReady', data)
+    testPusher['MyPusherChannel'].trigger('newDataReady', data['name'])
 
     return data['name']
 
