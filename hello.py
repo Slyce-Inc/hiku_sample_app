@@ -16,17 +16,9 @@ def hello():
 
 @app.route("/beep", methods = ['POST'])
 def showLastBeep():
-    #name = request.form.get('name', 'no data to show')
-    #token = request.form.get('token', '1234')
-    print 'in show beep'
-    #dataParam = request.form.get('data', json.dumps({'name':'havarti', 'token':'1234'}))
     payload = request.data
-    print 'received data param', payload
     payload = json.loads(payload)
-    print 'loaded up some json', payload['data']
     data = payload['data']
-    print 'pulled out some data', data
-    print 'name = ', data['name']
 
     # broadcast the name data to pusher
     PUSHER_APP_ID = "53386"
@@ -36,7 +28,7 @@ def showLastBeep():
     #data = {'name': name, 'ean': '00018823'}
 
     testPusher = pusher.Pusher(app_id=PUSHER_APP_ID, key=PUSHER_KEY, secret=PUSHER_SECRET)
-    testPusher[data['token']].trigger('newDataReady', data)
+    testPusher['MyPusherChannel'].trigger('newDataReady', data)
 
     return data['name']
 
