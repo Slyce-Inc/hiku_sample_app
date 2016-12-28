@@ -1,0 +1,30 @@
+<html>
+<!DOCTYPE html>
+<head>
+  <title>hiku sample app</title>
+  <script src="http://js.pusher.com/2.1/pusher.min.js" type="text/javascript"></script>
+  <script type="text/javascript">
+    // Enable pusher logging - don't include this in production
+    Pusher.log = function(message) {
+      if (window.console && window.console.log) {
+        window.console.log(message);
+      }
+    };
+
+
+    <!--These are the dev pusher creds from hiku-sample-app.herokuapp.com-->
+    var pusher = new Pusher('735d7f3f26bde43a7a72'); // this is where your key goes
+    var token = '1234'
+    var channel = pusher.subscribe('1234'); // this is where your token goes
+    channel.bind('newDataReady', function(data) {
+      alert('hiku sent: '.concat(data.name));
+    });
+  </script>
+</head><body>
+
+<h1>hiku show beep</h1>
+<p id="results">This will display the last beep for the token you configure.</p>
+
+
+</body>
+</html>
