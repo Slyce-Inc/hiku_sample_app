@@ -26,23 +26,28 @@ def welcome():
 @app.route("/beep", methods = ['POST'])
 def showLastBeep():
     payload = request.data
+    print payload
     payload = json.loads(payload)
     data = payload['data']
 
-    # broadcast the name data to pusher
-    #PUSHER_APP_ID = "53386"
-    #PUSHER_KEY = "735d7f3f26bde43a7a72"
-    #PUSHER_SECRET = "02a27e77a29a104ba596"
-    print 'in the app'
+    print data
+
+    if data['eventDesc'] == 'PRODUCT_ENTRY':
+        # this is a scan/speak from hiku
+        msg = 'New item from hiku: ' + data['name']
+    elif data['eventDesc'] == 'DEVICE_REGISTERED':
+        # this is a new hiku that was setup
+        msg = 'New hiku registered: ' + data['serialNumber']
+    else:
+        msg = data['eventDesc']
+
+    # broadcast data to pusher
     PUSHER_APP_ID = os.environ['PUSHER_APP_ID']
     PUSHER_KEY = os.environ['PUSHER_KEY']
     PUSHER_SECRET = os.environ['PUSHER_SECRET']
-    print 'creds  = ',PUSHER_APP_ID, PUSHER_KEY, PUSHER_SECRET
-
-    #data = {'name': name, 'ean': '00018823'}
 
     testPusher = pusher.Pusher(app_id=PUSHER_APP_ID, key=PUSHER_KEY, secret=PUSHER_SECRET)
-    testPusher['MyPusherChannel'].trigger('newDataReady', data['name'])
+    testPusher['MyPusherChannel'].trigger('newDataReady', msg)
 
     return data['name']
 

@@ -25,7 +25,7 @@
     var pusher = new Pusher('c90f72ad90007638c3a2'); // this is where your pusher key goes
     var channel = pusher.subscribe('MyPusherChannel');
     channel.bind('newDataReady', function(data) {
-      alert('hiku sent: '.concat(data));
+      alert(''.concat(data));
     });
   </script>
 </head><body>
