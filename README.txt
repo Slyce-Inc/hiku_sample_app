@@ -9,7 +9,7 @@ can be applied to any environment. To learn more about simple python flask apps 
 .com/2013/11/14/starting-a-simple-flask-app-with-heroku/. It is a helpful tutorial for setting up your local
 environment and deploying to heroku.
 
-To get started, clone the repository at https://github.com/rkatcher/hiku_sample_app.git, and then push it to a newly
+To get started, clone the repository at https://github.com/hikuinc/hiku_sample_app.git, and then push it to a newly
 created heroku app that you own.
 
 In order to see the demo work live, you will need to add Pusher to your heroku app. The app can run for free on
@@ -40,9 +40,9 @@ our API's). In other words, if you plan to build a commercial application, pleas
 Good for demos
 ----------------------
 You can customize how data is displayed by modifying docs/showBeep.htm. By 'branding' that page and applying your own
- fonts, color schemes, styles, etc it will demonstrate how easy it is for our partners to integrate hiku data into
- their own digital systems. We have found that a demo is very convincing with other stakeholders when hiku scan/speaks
- immediately show up in their own digital ecosystem.
+fonts, color schemes, styles, etc it will demonstrate how easy it is for our partners to integrate hiku data into
+their own digital systems. We have found that a demo is very convincing with other stakeholders when hiku scan/speaks
+immediately show up in their own digital ecosystem.
 
 ----------------------
 Build something really cool!
@@ -51,5 +51,7 @@ This app is purely a demonstration. Please take the code and modify it to do mor
 simply display the last scan/speak, e.g. add items to shopping basket, another list app, send an SMS, control the
 temperature of a Nest thermostat, etc!
 
-If you would like API credentials to do more than use webhooks, please email support@hiku.us.
+You can learn more about hiku webhooks (e.g. payload specifications, types of events supported, etc) and the full
+hiku API/SDK suite at https://github.com/hikuinc/hiku_shared. If you would like API credentials to do more than use
+webhooks, please email devrel@hiku.us.
 
