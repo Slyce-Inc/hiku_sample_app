@@ -13,6 +13,6 @@ requests==1.1.0
 requests-oauthlib==0.4.0
 rq==0.5.6
 simplejson==3.3.1
-urllib3==1.18
+urllib3==1.26.5
 virtualenv==1.9.1
 wsgiref==0.1.2
